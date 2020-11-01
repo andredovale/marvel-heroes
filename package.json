@@ -1,0 +1,19 @@
+{
+  "name": "marvel-heroes",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/andredovale/marvel-heroes.git",
+  "author": "André do Vale <andrealka@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "applications/*",
+    "shared/*"
+  ],
+  "scripts": {
+    "web": "yarn workspace @marvel-heroes/web",
+    "ds": "yarn workspace @marvel-heroes/design-system",
+    "utils": "yarn workspace @marvel-heroes/utils",
+    "test": "yarn workspaces run test"
+  }
+}
