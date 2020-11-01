@@ -20,7 +20,9 @@
 	},
 	"scripts": {
 		"test": "react-scripts test --coverage --no-cache --silent --watchAll false",
-		"test:dev": "react-scripts test"
+		"test:dev": "react-scripts test",
+		"storybook": "start-storybook -p 6006 --no-dll",
+		"build-storybook": "build-storybook --no-dll"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -41,5 +43,16 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"@babel/core": "^7.12.3",
+		"@storybook/addon-actions": "^6.0.28",
+		"@storybook/addon-essentials": "^6.0.28",
+		"@storybook/addon-links": "^6.0.28",
+		"@storybook/node-logger": "^6.0.28",
+		"@storybook/preset-create-react-app": "^3.1.4",
+		"@storybook/react": "^6.0.28",
+		"babel-loader": "^8.1.0",
+		"react-is": "^17.0.1"
 	}
 }
