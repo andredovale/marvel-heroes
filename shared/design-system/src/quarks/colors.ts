@@ -8,6 +8,7 @@ const colors = {
 	white: "#FFFFFF",
 	red: "#FF0000",
 	narvik: "#FCFEFC",
+	"alizarin-crimson": "#E92025",
 } as const;
 
 export default colors;

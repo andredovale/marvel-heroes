@@ -9,7 +9,7 @@ export interface LogoTheme {}
 export interface Props
 	extends Omit<
 			SVGAttributes<SVGElement>,
-			"fill" | "width" | "height" | "title"
+			"fill" | "height" | "title" | "width"
 		>,
 		Partial<LogoTheme> {
 	fill?: keyof typeof colors;
@@ -22,8 +22,8 @@ const Logo = forwardRef<any, Props>(
 			ref={ref}
 			fill={colors[fill]}
 			height="auto"
-			width={variant === "small" ? 88 : 191}
 			title="Marvel"
+			width={variant === "small" ? 88 : 191}
 			{...props}
 		/>
 	)

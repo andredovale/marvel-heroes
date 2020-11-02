@@ -1,2 +1,4 @@
+export { default as HeroCard } from "../molecules/HeroCard";
 export { default as LogoWithSlogan } from "../molecules/LogoWithSlogan";
+export { default as SearchField } from "../molecules/SearchField";
 export { default as TypographyWithIcon } from "../molecules/TypographyWithIcon";

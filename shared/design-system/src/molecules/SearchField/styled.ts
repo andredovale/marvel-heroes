@@ -4,9 +4,8 @@ import { SearchFieldTheme } from ".";
 
 const Container = styled("div")<SearchFieldTheme>`
 	align-items: center;
-	display: inline-flex;
+	display: flex;
 	position: relative;
-	width: 100%;
 
 	> :first-child {
 		left: ${({ variant }) =>
