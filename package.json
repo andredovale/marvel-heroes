@@ -14,6 +14,7 @@
 		"web": "yarn workspace @marvel-heroes/web",
 		"ds": "yarn workspace @marvel-heroes/design-system",
 		"utils": "yarn workspace @marvel-heroes/utils",
+		"lint": "eslint . --ext .ts,.tsx,.js,.jsx",
 		"test": "yarn workspaces run test"
 	},
 	"dependencies": {
