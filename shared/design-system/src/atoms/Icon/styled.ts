@@ -5,7 +5,7 @@ import { IconTheme } from ".";
 
 const Container = styled("div")<IconTheme>`
 	color: ${({ fill, opacity, theme }) => rgba(theme.colors[fill], opacity)};
-	display: flex;
+	display: inline-flex;
 	height: calc(${({ size }) => size} / 16 * 1em);
 	width: calc(${({ size }) => size} / 16 * 1em);
 

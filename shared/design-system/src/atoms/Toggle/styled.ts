@@ -15,7 +15,7 @@ const FakeCheckbox = styled("label")<ToggleTheme>`
 			rgba(theme.colors[backgroundColor], 0.35)};
 		border-radius: calc(2.4375em / 2);
 		cursor: pointer;
-		display: flex;
+		display: inline-flex;
 		height: 2.4375em;
 		position: relative;
 		width: 4.6875em;

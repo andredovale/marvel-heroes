@@ -7,6 +7,7 @@ const Text = styled("p")<TypographyTheme>`
 	${({ theme, variant }) => theme.typography[variant]};
 	color: ${({ color, opacity, theme }) => rgba(theme.colors[color], opacity)};
 	line-height: ${({ lineHeight }) => lineHeight};
+	margin: 0;
 `;
 
 export { Text };
