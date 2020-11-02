@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "custom/@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import Toggle from "../";
+import Toggle from "..";
 
 test("<Toggle /> render", () => {
 	render(<Toggle />);

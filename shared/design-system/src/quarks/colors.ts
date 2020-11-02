@@ -5,6 +5,7 @@ const colors = {
 	tundora: "#404040",
 	gray: "#8C8C8C",
 	silver: "#B9B9B9",
+	white: "#FFFFFF",
 } as const;
 
 export default colors;

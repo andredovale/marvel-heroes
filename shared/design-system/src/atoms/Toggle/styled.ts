@@ -1,17 +1,15 @@
 import styled from "styled-components";
 import { rgba } from "polished";
 
+import { ToggleTheme } from ".";
+
 const Checkbox = styled("input").attrs({
 	type: "checkbox",
 })`
 	display: none;
 `;
 
-const FakeCheckbox = styled("label").attrs({
-	backgroundColor: "silver",
-	innerCheckedColor: "scarlet",
-	innerUncheckedColor: "scarlet",
-})`
+const FakeCheckbox = styled("label")<ToggleTheme>`
 	input + & {
 		background-color: ${({ backgroundColor, theme }) =>
 			rgba(theme.colors[backgroundColor], 0.35)};

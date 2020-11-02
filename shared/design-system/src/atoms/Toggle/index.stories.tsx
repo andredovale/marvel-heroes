@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 
-import { default as Source, Props } from "./";
+import { default as Source, Props } from ".";
 
 export default {
 	title: "Atoms/Toggle",
