@@ -14,7 +14,11 @@ const Input = styled("input")<InputTextTheme>`
 	border-radius: ${getByVariant("calc(3.4782em / 2)", "calc(3.5263em / 2)")};
 	caret-color: ${({ caretColor, theme }) => theme.colors[caretColor]};
 	color: ${({ textColor, theme }) => theme.colors[textColor]};
-	font-size: ${getByVariant("0.7906em", "1.1875em")};
+	${({ theme, variant }) =>
+		getByVariant(
+			theme.typography["input-small"],
+			theme.typography["input-large"]
+		)({ variant } as InputTextTheme)};
 	line-height: ${getByVariant("1.3439", "1.2105")};
 	height: ${getByVariant("3.4782em", "3.5263em")};
 	padding-left: ${({ paddingLeft, variant }) =>

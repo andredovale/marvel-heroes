@@ -1,9 +1,10 @@
 import React from "react";
-import { colors } from "quarks";
+import { colors, typography } from "quarks";
 import { ThemeProviderProps, ThemeProvider } from "styled-components";
 
 const theme = {
 	colors,
+	typography,
 };
 
 const Provider = ({

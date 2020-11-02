@@ -5,7 +5,7 @@ import { createGlobalStyle } from "styled-components";
 import { Provider } from "theme";
 
 const GlobalStyle = createGlobalStyle`
-	@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
+	@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&display=swap");
 
 	#root * {
 		font-family: "Work Sans", sans-serif;
