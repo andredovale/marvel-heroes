@@ -7,6 +7,7 @@ const colors = {
 	silver: "#B9B9B9",
 	white: "#FFFFFF",
 	red: "#FF0000",
+	narvik: "#FCFEFC",
 } as const;
 
 export default colors;
