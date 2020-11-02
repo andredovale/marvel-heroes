@@ -1,19 +1,10 @@
 import React, { forwardRef } from "react";
 
-import { colors, typography } from "quarks";
-
 import { Icon, Typography } from "atoms";
 import { Props as IconProps } from "atoms/Icon";
 import { Props as TypographyProps } from "atoms/Typography";
 
 import { Container } from "./styled";
-
-export interface TypographyTheme {
-	color: keyof typeof colors;
-	lineHeight: number;
-	opacity: number;
-	variant: keyof typeof typography;
-}
 
 export interface Props {
 	children?: React.ReactNode;
