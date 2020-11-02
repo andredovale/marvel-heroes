@@ -16,9 +16,8 @@ test("<InputText /> render", () => {
 
 	rerender(<InputText variant="large" paddingLeft="20em" />);
 
-	const newTextbox = screen.getByRole("textbox");
-	const newHeight = toNumber(getComputedStyle(newTextbox).height);
-	const newPaddingLeft = toNumber(getComputedStyle(newTextbox).paddingLeft);
+	const newHeight = toNumber(getComputedStyle(textbox).height);
+	const newPaddingLeft = toNumber(getComputedStyle(textbox).paddingLeft);
 
 	expect(newHeight > height).toBe(true);
 	expect(newPaddingLeft > paddingLeft).toBe(true);

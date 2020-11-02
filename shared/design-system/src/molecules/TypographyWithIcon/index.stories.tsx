@@ -4,7 +4,7 @@ import { Story, Meta } from "@storybook/react";
 import { default as Source, Props } from ".";
 
 export default {
-	title: "Atoms/TypographyWithIcon",
+	title: "Molecules/TypographyWithIcon",
 	component: Source,
 } as Meta;
 
