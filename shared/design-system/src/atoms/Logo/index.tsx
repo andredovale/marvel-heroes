@@ -21,7 +21,7 @@ const Logo = forwardRef<any, Props>(
 		<Marvel
 			ref={ref}
 			fill={colors[fill]}
-			height="auto"
+			height={undefined}
 			title="Marvel"
 			width={variant === "small" ? 88 : 191}
 			{...props}
