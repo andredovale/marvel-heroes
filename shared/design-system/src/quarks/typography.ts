@@ -51,6 +51,10 @@ const typography = {
 		"font-weight": "500",
 		"font-size": "14px",
 	},
+	"small-2-semibold": {
+		"font-weight": "600",
+		"font-size": "14px",
+	},
 	"small-3": {
 		"font-weight": "500",
 		"font-size": "15.9px",
