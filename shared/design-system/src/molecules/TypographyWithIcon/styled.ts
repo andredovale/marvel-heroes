@@ -7,6 +7,14 @@ const Container = styled("div")`
 	> :first-child {
 		margin-right: 0.875em;
 	}
+
+	button& {
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		font-size: 16px;
+		padding: 0;
+	}
 `;
 
 export { Container };

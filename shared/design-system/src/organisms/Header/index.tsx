@@ -25,15 +25,24 @@ const Header = forwardRef<any, Props>(
 			logoWithSloganProps,
 			title,
 			subtitle,
-			searchFieldProps: { inputTextProps, ...searchFieldProps } = {},
+			searchFieldProps: {
+				inputTextProps: {
+					onChange: onChangeFromInputTextProps = () => {},
+					value: valueFromInputTextProps = "",
+					...inputTextProps
+				} = {},
+				...searchFieldProps
+			} = {},
 			onSubmit,
 		}: Props,
 		ref
 	) => {
-		const [value, setValue] = useState("");
+		const [value, setValue] = useState(String(valueFromInputTextProps));
 
 		const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 			setValue(event.currentTarget.value);
+
+			onChangeFromInputTextProps && onChangeFromInputTextProps(event);
 		};
 
 		const handlerSubmit = (event: React.FormEvent<HTMLFormElement>) => {

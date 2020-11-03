@@ -39,7 +39,11 @@ const ToggleWithAdornment = forwardRef<any, Props>(
 			<Container ref={ref} onClick={onClick}>
 				<TypographyWithIcon
 					{...typographyWithIconProps}
-					typographyProps={{ color: "scarlet", ...typographyProps }}
+					typographyProps={{
+						color: "scarlet",
+						opacity: 0.6,
+						...typographyProps,
+					}}
 				>
 					{children}
 				</TypographyWithIcon>

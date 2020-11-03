@@ -19,6 +19,7 @@ const Title = styled(Typography).attrs({
 `;
 
 const Subtitle = styled(Typography).attrs({
+	color: "gray",
 	variant: "small-2-medium",
 })`
 	margin-top: 0.5714em;
