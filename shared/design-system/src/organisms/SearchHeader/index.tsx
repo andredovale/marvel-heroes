@@ -7,6 +7,7 @@ import { Container, Title, Toggle, Button } from "./styled";
 
 export interface Props {
 	title: string;
+	toggleChecked: InputHTMLAttributes<HTMLInputElement>["checked"];
 	toggleText: string;
 	onToggle: NonNullable<ToggleProps["onChange"]>;
 	buttonIcons: Record<Props["buttonState"], keyof typeof Icons>;
@@ -19,6 +20,7 @@ const SearchHeader = forwardRef<any, Props>(
 	(
 		{
 			title,
+			toggleChecked,
 			toggleText,
 			onToggle,
 			buttonIcons,
@@ -30,7 +32,11 @@ const SearchHeader = forwardRef<any, Props>(
 	) => (
 		<Container ref={ref}>
 			<Title>{title}</Title>
-			<Toggle toggleProps={{ onChange: onToggle }}>{toggleText}</Toggle>
+			<Toggle
+				toggleProps={{ checked: toggleChecked, onChange: onToggle }}
+			>
+				{toggleText}
+			</Toggle>
 			<Button
 				iconProps={{ icon: buttonIcons[buttonState], size: 19 }}
 				buttonProps={{

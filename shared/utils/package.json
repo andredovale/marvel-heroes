@@ -7,7 +7,9 @@
 		"test:dev": "react-scripts test"
 	},
 	"devDependencies": {
-		"react-scripts": "4.0.0"
+		"@testing-library/react-hooks": "^3.4.2",
+		"react-scripts": "4.0.0",
+		"react-test-renderer": "^17.0.1"
 	},
 	"browserslist": {
 		"production": [
