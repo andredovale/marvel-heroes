@@ -10,7 +10,7 @@ const Container = styled("div")<HeroTheme>`
 	background-color: ${({ backgroundColor }) => backgroundColor};
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	min-height: 100vh;
 	overflow: hidden;
 `;
 

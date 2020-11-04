@@ -1,23 +1,22 @@
 import React from "react";
 
-import { A, B } from "@marvel-heroes/design-system/src/tests";
+import { Props as Hero } from "@marvel-heroes/design-system/src/molecules/HeroCard";
+import Home from "@marvel-heroes/design-system/src/templates/Home";
+import mock from "@marvel-heroes/design-system/src/templates/Home/__mock__";
+
+const newHeroes = mock.heroesGridProps.heroes.map((hero: Hero) => ({
+	...hero,
+	href: hero.name,
+	target: "_self",
+}));
 
 function App() {
 	return (
 		<>
-			<div>
-				<A
-					lorem="ipsum"
-					dolor="sit"
-					et={1}
-					amet={{ consectur: "adiscipining" }}
-					lament={[1, 2, 3]}
-				/>
-			</div>
-			<hr />
-			<div>
-				<B />
-			</div>
+			<Home
+				{...mock}
+				heroesGridProps={{ ...mock.heroesGridProps, heroes: newHeroes }}
+			/>
 		</>
 	);
 }

@@ -39,7 +39,8 @@ const Home = forwardRef<any, Props>(
 				</LocalHeader>
 				{!!headerProps?.searchFieldProps?.inputTextProps?.value && (
 					<Content>
-						{!heroesGridProps.heroes.length ? (
+						{!heroesGridProps.heroes ||
+						!heroesGridProps.heroes.length ? (
 							<NoContent>{noContentText}</NoContent>
 						) : (
 							<>
