@@ -3,11 +3,11 @@
 ## Requisitos
 
 -   [ ] Deve ser uma SPA “single page application” (dar preferencia ao React);
--   [ ] Não utilizar bibliotecas de UI como: bootstrap, semantic-ui, antdesign e etc;
+-   [x] Não utilizar bibliotecas de UI como: bootstrap, semantic-ui, antdesign e etc;
 -   [ ] Utilizar API da Marvel (https://developer.marvel.com/docs);
 -   [ ] Disponibilizar em uma URL pública do projeto rodando para avaliação;
--   [ ] Disponibilizar código em repositório Git de sua preferência, commitando cada fase do seu processo de desenvolvimento;
--   [ ] Seguir layout da pasta `./assets`, respeitando as páginas, features e componentes (não será avaliado “pixel perfect”).
+-   [x] Disponibilizar código em repositório Git de sua preferência, commitando cada fase do seu processo de desenvolvimento;
+-   [x] Seguir layout da pasta `./assets`, respeitando as páginas, features e componentes (não será avaliado “pixel perfect”).
 
 ## Requisitos funcionais
 
@@ -30,7 +30,7 @@
 -   [ ] Adicionar paginação a listagem para exibir além dos 20 personagens iniciais;
 -   [ ] Persistir os dados de favoritos (para manter os dados após o reload da página);
 -   [ ] Layout responsivo;
--   [ ] Utilização de ES6+;
--   [ ] Utilização de ferramentas para garantir a qualidade do código;
+-   [x] Utilização de ES6+;
+-   [x] Utilização de ferramentas para garantir a qualidade do código;
 -   [ ] Teste e2e;
 -   [ ] CI/CD.
