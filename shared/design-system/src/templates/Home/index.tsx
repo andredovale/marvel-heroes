@@ -32,33 +32,29 @@ const Home = forwardRef<any, Props>(
 		}: Props,
 		ref
 	) => (
-		<>
-			<Container ref={ref}>
-				<Wrapper>
-					<LocalHeader>
-						<Header {...headerProps} variant="large" />
-					</LocalHeader>
-					{!!headerProps?.searchFieldProps?.inputTextProps?.value && (
-						<Content>
-							{!heroesGridProps.heroes.length ? (
-								<NoContent>{noContentText}</NoContent>
-							) : (
-								<>
-									<SearchHeader {...searchHeaderProps} />
-									<Spacer />
-									<HeroesGrid {...heroesGridProps} />
-								</>
-							)}
-						</Content>
-					)}
-				</Wrapper>
-				<Footer
-					noValue={
-						!headerProps?.searchFieldProps?.inputTextProps?.value
-					}
-				/>
-			</Container>
-		</>
+		<Container ref={ref}>
+			<Wrapper>
+				<LocalHeader>
+					<Header {...headerProps} variant="large" />
+				</LocalHeader>
+				{!!headerProps?.searchFieldProps?.inputTextProps?.value && (
+					<Content>
+						{!heroesGridProps.heroes.length ? (
+							<NoContent>{noContentText}</NoContent>
+						) : (
+							<>
+								<SearchHeader {...searchHeaderProps} />
+								<Spacer />
+								<HeroesGrid {...heroesGridProps} />
+							</>
+						)}
+					</Content>
+				)}
+			</Wrapper>
+			<Footer
+				noValue={!headerProps?.searchFieldProps?.inputTextProps?.value}
+			/>
+		</Container>
 	)
 );
 
