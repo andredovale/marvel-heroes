@@ -26,4 +26,9 @@ module.exports = {
 
 		return config;
 	},
+	jest: function (config) {
+		config.modulePaths = config.modulePaths.concat(resolveModules);
+
+		return config;
+	},
 };
