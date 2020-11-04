@@ -1,4 +1,4 @@
-import React, { AnchorHTMLAttributes, forwardRef } from "react";
+import React, { forwardRef } from "react";
 
 import { Logo, Typography } from "atoms";
 import { Props as LogoProps } from "atoms/Logo";
@@ -10,9 +10,7 @@ export interface LogoWithSloganTheme {
 	variant: LogoProps["variant"];
 }
 
-export interface Props
-	extends AnchorHTMLAttributes<HTMLAnchorElement>,
-		Partial<LogoWithSloganTheme> {
+export interface Props extends Partial<LogoWithSloganTheme> {
 	logoProps?: Omit<LogoProps, "variant">;
 	typographyProps?: Omit<TypographyProps, "variant">;
 }
