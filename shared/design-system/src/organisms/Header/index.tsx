@@ -54,7 +54,11 @@ const Header = forwardRef<any, Props>(
 		return (
 			<Container ref={ref} variant={variant}>
 				<LogoWithSlogan {...logoWithSloganProps} variant={variant} />
-				{title && variant === "large" && <Title>{title}</Title>}
+				{title && variant === "large" && (
+					<Title>
+						<strong>{title}</strong>
+					</Title>
+				)}
 				{subtitle && variant === "large" && (
 					<Subtitle>{subtitle}</Subtitle>
 				)}
