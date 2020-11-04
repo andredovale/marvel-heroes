@@ -2,6 +2,7 @@ import { Props } from ".";
 
 const mock: Props = {
 	headerProps: {
+		// eslint-disable-next-line no-console
 		onSubmit: (_, value) => console.log({ value }),
 		searchFieldProps: {
 			inputTextProps: {

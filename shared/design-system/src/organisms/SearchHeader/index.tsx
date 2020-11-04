@@ -27,24 +27,20 @@ const SearchHeader = forwardRef<any, Props>(
 			onButtonClick,
 		}: Props,
 		ref
-	) => {
-		return (
-			<Container ref={ref}>
-				<Title>{title}</Title>
-				<Toggle toggleProps={{ onChange: onToggle }}>
-					{toggleText}
-				</Toggle>
-				<Button
-					iconProps={{ icon: buttonIcons[buttonState], size: 19 }}
-					buttonProps={{
-						onClick: onButtonClick,
-					}}
-				>
-					{buttonText}
-				</Button>
-			</Container>
-		);
-	}
+	) => (
+		<Container ref={ref}>
+			<Title>{title}</Title>
+			<Toggle toggleProps={{ onChange: onToggle }}>{toggleText}</Toggle>
+			<Button
+				iconProps={{ icon: buttonIcons[buttonState], size: 19 }}
+				buttonProps={{
+					onClick: onButtonClick,
+				}}
+			>
+				{buttonText}
+			</Button>
+		</Container>
+	)
 );
 
 export default SearchHeader;

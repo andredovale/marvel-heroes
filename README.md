@@ -1,5 +1,7 @@
 # Marvel Heroes
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bd617c20-09ef-4789-b935-96e65b28a46a/deploy-status)](https://app.netlify.com/sites/do-vale-marvel-heroes/deploys)
+
 ## Requisitos
 
 -   [ ] Deve ser uma SPA “single page application” (dar preferencia ao React);

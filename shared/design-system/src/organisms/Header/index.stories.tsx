@@ -20,6 +20,7 @@ Header.args = {
 	title: "Explore o universo",
 	subtitle:
 		"Mergulhe no domínio deslumbrante de todos os personagens clássicos que você ama - e aqueles que você descobrirá em breve!",
+	// eslint-disable-next-line no-console
 	onSubmit: (_, value) => console.log({ value }),
 };
 

@@ -9,14 +9,6 @@
 	"devDependencies": {
 		"react-scripts": "4.0.0"
 	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest",
-			"prettier",
-			"prettier/react"
-		]
-	},
 	"browserslist": {
 		"production": [
 			">0.2%",

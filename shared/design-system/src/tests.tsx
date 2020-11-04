@@ -19,6 +19,7 @@ const B = () => {
 
 	useEffect(() => {
 		setTotal(sum(a, b));
+		// eslint-disable-next-line no-console
 		console.log("sumClosure", sumClosure(a, b));
 	}, [a, b]);
 

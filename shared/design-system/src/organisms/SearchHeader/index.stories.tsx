@@ -33,6 +33,7 @@ export const SearchHeader: Story<Props> = (args) => {
 SearchHeader.args = {
 	title: "Encontrados 20 heróis",
 	toggleText: "Ordenar por nome - A/Z",
+	// eslint-disable-next-line no-console
 	onToggle: (event) => console.log({ onToggle: event.currentTarget.checked }),
 	buttonIcons: { active: "Heart", unactive: "EmptyHeart" },
 	buttonText: "Somente favoritos",

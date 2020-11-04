@@ -1,0 +1,27 @@
+{
+	"root": true,
+	"extends": ["react-app", "plugin:prettier/recommended"],
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint", "prettier", "react", "react-hooks"],
+	"rules": {
+		"prettier/prettier": "error",
+		"indent": "off",
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "double"],
+		"semi": ["error", "always"],
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
+		"arrow-body-style": ["error", "as-needed"],
+		"prefer-template": "error",
+		"complexity": ["error", 6],
+		"no-console": "error"
+	},
+	"ignorePatterns": [
+		"**/node_modules/*",
+		"**/coverage/*",
+		"**/build/*",
+		"**/public/*",
+		"react-app-env.d.ts",
+		"*.md"
+	]
+}

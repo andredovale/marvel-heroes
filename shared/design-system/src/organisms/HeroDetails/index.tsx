@@ -46,43 +46,39 @@ const HeroDetails = forwardRef<any, Props>(
 			lastComicDate,
 		}: Props,
 		ref
-	) => {
-		return (
-			<Container ref={ref}>
-				<Header>
-					<Name>{name}</Name>
-					<Icon icon={isFavorited ? "Heart" : "EmptyHeart"} />
-				</Header>
-				<Description>{description}</Description>
-				<Counters>
-					<Counter>
-						<CounterTitle>{comicBooksTitle}</CounterTitle>
-						<TypographyWithIcon
-							iconProps={{ icon: "ComicBook", size: 32 }}
-						>
-							{comicBooksCount}
-						</TypographyWithIcon>
-					</Counter>
-					<Counter>
-						<CounterTitle>{moviesTitle}</CounterTitle>
-						<TypographyWithIcon
-							iconProps={{ icon: "Movie", size: 32 }}
-						>
-							{moviesCount}
-						</TypographyWithIcon>
-					</Counter>
-				</Counters>
-				<div>
-					<RatingTitle>{ratingTitle}</RatingTitle>
-					<Rating value={ratingValue} />
-				</div>
-				<LastComic>
-					<strong>{lastComicTitle}</strong>
-					{lastComicDate}
-				</LastComic>
-			</Container>
-		);
-	}
+	) => (
+		<Container ref={ref}>
+			<Header>
+				<Name>{name}</Name>
+				<Icon icon={isFavorited ? "Heart" : "EmptyHeart"} />
+			</Header>
+			<Description>{description}</Description>
+			<Counters>
+				<Counter>
+					<CounterTitle>{comicBooksTitle}</CounterTitle>
+					<TypographyWithIcon
+						iconProps={{ icon: "ComicBook", size: 32 }}
+					>
+						{comicBooksCount}
+					</TypographyWithIcon>
+				</Counter>
+				<Counter>
+					<CounterTitle>{moviesTitle}</CounterTitle>
+					<TypographyWithIcon iconProps={{ icon: "Movie", size: 32 }}>
+						{moviesCount}
+					</TypographyWithIcon>
+				</Counter>
+			</Counters>
+			<div>
+				<RatingTitle>{ratingTitle}</RatingTitle>
+				<Rating value={ratingValue} />
+			</div>
+			<LastComic>
+				<strong>{lastComicTitle}</strong>
+				{lastComicDate}
+			</LastComic>
+		</Container>
+	)
 );
 
 export default HeroDetails;

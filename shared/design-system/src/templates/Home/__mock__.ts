@@ -5,6 +5,7 @@ const mock: Props = {
 		title: "Explore o universo",
 		subtitle:
 			"Mergulhe no domínio deslumbrante de todos os personagens clássicos que você ama - e aqueles que você descobrirá em breve!",
+		// eslint-disable-next-line no-console
 		onSubmit: (_, value) => console.log({ value }),
 		searchFieldProps: {
 			inputTextProps: {
@@ -17,9 +18,11 @@ const mock: Props = {
 		title: "Encontrados 20 heróis",
 		toggleText: "Ordenar por nome - A/Z",
 		onToggle: (event) =>
+			// eslint-disable-next-line no-console
 			console.log({ onToggle: event.currentTarget.checked }),
 		buttonIcons: { active: "Heart", unactive: "EmptyHeart" },
 		onButtonClick: (event) =>
+			// eslint-disable-next-line no-console
 			console.log({ onButtonClick: event.currentTarget.value }),
 		buttonState: "unactive",
 		buttonText: "Somente favoritos",
@@ -43,6 +46,7 @@ const mock: Props = {
 				isFavorited: false,
 			},
 		],
+		// eslint-disable-next-line no-console
 		onFavorite: (uid) => console.log({ uid }),
 	},
 };
