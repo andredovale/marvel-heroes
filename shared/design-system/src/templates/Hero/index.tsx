@@ -10,7 +10,7 @@ import {
 	Wrapper,
 	Header as LocalHeader,
 	Content,
-	NoContent,
+	Warning,
 	Article,
 	BigHero,
 	MovieThumbnail,
@@ -23,61 +23,81 @@ export interface HeroTheme {
 	backgroundColor: string;
 }
 
-export interface Props extends Partial<HeroTheme> {
-	headerProps: Omit<HeaderProps, "variant">;
-	noContentText: string;
+interface InnerContentProps extends HeroTheme {
 	heroDetailsProps: HeroDetailsProps;
+	error?: boolean;
+	errorText: string;
+	loading?: boolean;
+	loadingText: string;
 	movieThumbnail?: string;
 	highDefinitionPhoto?: string;
 	comicBooksTitle: string;
 	comicBooksGridProps: ComicBooksGridProps;
 }
+export interface Props
+	extends Partial<HeroTheme>,
+		Omit<InnerContentProps, "backgroundColor"> {
+	headerProps: Omit<HeaderProps, "variant">;
+}
 
-const Hero = forwardRef<any, Props>(
+const InnerContent = forwardRef<any, InnerContentProps>(
 	(
 		{
-			backgroundColor = "#E7F6E7",
-			headerProps,
-			noContentText,
 			heroDetailsProps,
+			error,
+			errorText,
+			loading,
+			loadingText,
 			movieThumbnail,
+			backgroundColor,
 			highDefinitionPhoto,
 			comicBooksTitle,
 			comicBooksGridProps,
-		}: Props,
+		},
 		ref
-	) => (
+	) => {
+		if (error) return <Warning ref={ref}>{errorText}</Warning>;
+
+		if (loading) return <Warning ref={ref}>{loadingText}</Warning>;
+
+		return (
+			<>
+				<Article>
+					<HeroDetails {...heroDetailsProps} />
+					<BigHero>{heroDetailsProps.name}</BigHero>
+					{!!movieThumbnail && (
+						<MovieThumbnail
+							backgroundColor={backgroundColor}
+							alt={heroDetailsProps.name}
+							src={movieThumbnail}
+						/>
+					)}
+					{!!highDefinitionPhoto && (
+						<HighDefinitionPhoto
+							alt={heroDetailsProps.name}
+							src={highDefinitionPhoto}
+						/>
+					)}
+				</Article>
+				<ComicBooksTitle>{comicBooksTitle}</ComicBooksTitle>
+				<ComicBooksGrid {...comicBooksGridProps} />
+			</>
+		);
+	}
+);
+
+const Hero = forwardRef<any, Props>(
+	({ backgroundColor = "#E7F6E7", headerProps, ...props }: Props, ref) => (
 		<Container ref={ref} backgroundColor={backgroundColor}>
 			<Wrapper>
 				<LocalHeader>
 					<Header {...headerProps} variant="small" />
 				</LocalHeader>
 				<Content>
-					{!heroDetailsProps || !heroDetailsProps.name ? (
-						<NoContent>{noContentText}</NoContent>
-					) : (
-						<>
-							<Article>
-								<HeroDetails {...heroDetailsProps} />
-								<BigHero>{heroDetailsProps.name}</BigHero>
-								{!!movieThumbnail && (
-									<MovieThumbnail
-										backgroundColor={backgroundColor}
-										alt={heroDetailsProps.name}
-										src={movieThumbnail}
-									/>
-								)}
-								{!!highDefinitionPhoto && (
-									<HighDefinitionPhoto
-										alt={heroDetailsProps.name}
-										src={highDefinitionPhoto}
-									/>
-								)}
-							</Article>
-							<ComicBooksTitle>{comicBooksTitle}</ComicBooksTitle>
-							<ComicBooksGrid {...comicBooksGridProps} />
-						</>
-					)}
+					<InnerContent
+						{...props}
+						backgroundColor={backgroundColor}
+					/>
 				</Content>
 			</Wrapper>
 			<Footer />

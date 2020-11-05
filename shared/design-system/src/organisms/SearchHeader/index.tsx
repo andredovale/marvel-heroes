@@ -1,4 +1,8 @@
-import React, { ButtonHTMLAttributes, forwardRef } from "react";
+import React, {
+	InputHTMLAttributes,
+	ButtonHTMLAttributes,
+	forwardRef,
+} from "react";
 
 import { Props as ToggleProps } from "atoms/Toggle";
 import * as Icons from "atoms/Icon/assets";

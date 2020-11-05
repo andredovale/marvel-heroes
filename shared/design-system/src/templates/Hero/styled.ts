@@ -81,7 +81,7 @@ const ComicBooksTitle = styled(Typography).attrs({
 	margin-bottom: 2.7917em;
 `;
 
-const NoContent = styled(Typography).attrs({
+const Warning = styled(Typography).attrs({
 	color: "scarlet",
 	variant: "head-3",
 })`
@@ -105,6 +105,6 @@ export {
 	MovieThumbnail,
 	HighDefinitionPhoto,
 	ComicBooksTitle,
-	NoContent,
+	Warning,
 	Footer,
 };

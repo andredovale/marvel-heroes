@@ -1,6 +1,9 @@
 import React, { forwardRef } from "react";
 
-import Rating, { Props as RatingProps } from "molecules/Rating";
+import { IconButton } from "atoms";
+import { Props as IconButtonProps } from "atoms/IconButton";
+import { Rating, TypographyWithIcon } from "molecules";
+import { Props as RatingProps } from "molecules/Rating";
 
 import {
 	Container,
@@ -13,12 +16,13 @@ import {
 	RatingTitle,
 	LastComic,
 } from "./styled";
-import { Icon } from "atoms";
-import { TypographyWithIcon } from "molecules";
 
 export interface Props {
+	uid: string;
 	name: string;
 	isFavorited: boolean;
+	iconButtonProps?: Omit<IconButtonProps, "icon" | "onClick">;
+	onFavorite: (uid: Props["uid"], isFavorited: Props["isFavorited"]) => void;
 	description: string;
 	comicBooksTitle: string;
 	comicBooksCount: number;
@@ -33,8 +37,11 @@ export interface Props {
 const HeroDetails = forwardRef<any, Props>(
 	(
 		{
+			uid,
 			name,
 			isFavorited,
+			iconButtonProps,
+			onFavorite,
 			description,
 			comicBooksTitle,
 			comicBooksCount,
@@ -50,7 +57,14 @@ const HeroDetails = forwardRef<any, Props>(
 		<Container ref={ref}>
 			<Header>
 				<Name>{name}</Name>
-				<Icon icon={isFavorited ? "Heart" : "EmptyHeart"} />
+				<IconButton
+					{...iconButtonProps}
+					icon={isFavorited ? "Heart" : "EmptyHeart"}
+					onClick={(event) => {
+						event.preventDefault();
+						onFavorite(uid, !isFavorited);
+					}}
+				/>
 			</Header>
 			<Description>{description}</Description>
 			<Counters>

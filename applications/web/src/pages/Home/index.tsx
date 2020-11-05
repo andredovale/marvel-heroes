@@ -1,15 +1,23 @@
-// @ts-nocheck
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+	InputHTMLAttributes,
+	useCallback,
+	useEffect,
+	useMemo,
+	useState,
+} from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import _debounce from "lodash/debounce";
 import useAxios from "axios-hooks";
 
+import { Props as ToggleProps } from "@marvel-heroes/design-system/src/atoms/Toggle";
+import { Props as HeroCardProps } from "@marvel-heroes/design-system/src/molecules/HeroCard";
+import { Props as HeaderProps } from "@marvel-heroes/design-system/src/organisms/Header";
+import Home from "@marvel-heroes/design-system/src/templates/Home";
 import { abstractHeroes } from "@marvel-heroes/utils/src/Heroes";
 import { generateHash } from "@marvel-heroes/utils/src/MarvelHash";
 import { useLocalStorage } from "@marvel-heroes/utils/src/Storage";
-import Home from "@marvel-heroes/design-system/src/templates/Home";
 
-import { API, FAVORITES_LIMIT } from "../../contants";
+import { API, FAVORITES_LIMIT } from "contants";
 
 const frozen = {
 	headerProps: {
@@ -43,7 +51,9 @@ const App = () => {
 		[]
 	);
 
-	const onChange = (event) => {
+	const onChange: InputHTMLAttributes<HTMLInputElement>["onChange"] = (
+		event
+	) => {
 		debouncedSetSavedValue(event.currentTarget.value);
 	};
 
@@ -55,7 +65,7 @@ const App = () => {
 		"marvelHeroes.search.settings.orderByName"
 	);
 
-	const onToggle = (event) => {
+	const onToggle: ToggleProps["onChange"] = (event) => {
 		setOrderByName(event.currentTarget.checked);
 	};
 
@@ -64,7 +74,7 @@ const App = () => {
 		const charactersQuery = new URLSearchParams({
 			...(orderByName === true ? { orderBy: "-name" } : {}),
 			nameStartsWith: savedValue,
-			limit: 20,
+			limit: "20",
 		}).toString();
 
 		const ts = String(+new Date());
@@ -89,7 +99,7 @@ const App = () => {
 	/** This approach is necessary, because on consecutives submits,
 	 * the useEffect don't run
 	 */
-	const onSubmit = (_, value) => {
+	const onSubmit: HeaderProps["onSubmit"] = (_, value) => {
 		if (value === savedValue) return execute();
 
 		debouncedSetSavedValue(value);
@@ -112,13 +122,13 @@ const App = () => {
 	};
 
 	/** Favorites heroes collection on browser storage */
-	const [favorites = [], { set: setFavorites }] = useLocalStorage<Array>(
+	const [favorites = [], { set: setFavorites }] = useLocalStorage(
 		"marvelHeroes.heroes.favorites"
 	);
 
-	const onFavorite = (uid) => {
+	const onFavorite: HeroCardProps["onFavorite"] = (uid) => {
 		if (favorites.includes(uid)) {
-			const index = favorites.findIndex(
+			const index = (favorites as string[]).findIndex(
 				(favoritedUid) => uid === favoritedUid
 			);
 			setFavorites([
@@ -167,7 +177,6 @@ const App = () => {
 					},
 				},
 			}}
-			noContentText={frozen.noContentText}
 			searchHeaderProps={{
 				...frozen.searchHeaderProps,
 				toggleText: `Ordenar por nome - ${orderByName ? "Z/A" : "A/Z"}`,
@@ -180,7 +189,7 @@ const App = () => {
 				onButtonClick,
 				buttonState: onlyFavorites,
 			}}
-			error={error}
+			error={!!error}
 			errorText="Erro ao solicitar a lista de heróis"
 			loading={loading}
 			loadingText="Buscando pelos heróis"
