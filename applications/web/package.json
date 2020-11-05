@@ -12,9 +12,13 @@
 	"dependencies": {
 		"@marvel-heroes/design-system": "^0.0.1",
 		"@marvel-heroes/utils": "^0.0.1",
+		"axios": "^0.21.0",
+		"axios-hooks": "^2.1.0",
+		"lodash": "^4.17.20",
 		"react-router-dom": "^5.2.0"
 	},
 	"devDependencies": {
+		"@types/lodash": "^4.14.164",
 		"@types/react-router-dom": "^5.1.6",
 		"react-app-rewired": "^2.1.6",
 		"react-scripts": "4.0.0"

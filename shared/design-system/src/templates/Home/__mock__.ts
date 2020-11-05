@@ -13,10 +13,17 @@ const mock: Props = {
 			},
 		},
 	},
-	noContentText: "Nenhum herói encontrado",
+	error: false,
+	errorText: "Erro ao solicitar a lista de heróis",
+	loading: false,
+	loadingText: "Buscando pelos heróis",
+	noFavorite: false,
+	noFavoriteText: "Nenhum herói favorito dentre a lista de encontrados",
+	noDataText: "Nenhum herói encontrado",
 	searchHeaderProps: {
 		title: "Encontrados 20 heróis",
 		toggleText: "Ordenar por nome - A/Z",
+		toggleChecked: false,
 		onToggle: (event) =>
 			// eslint-disable-next-line no-console
 			console.log({ onToggle: event.currentTarget.checked }),

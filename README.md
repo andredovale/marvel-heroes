@@ -6,7 +6,7 @@
 
 -   [x] Deve ser uma SPA “single page application” (dar preferencia ao React);
 -   [x] Não utilizar bibliotecas de UI como: bootstrap, semantic-ui, antdesign e etc;
--   [ ] Utilizar API da Marvel (https://developer.marvel.com/docs);
+-   [x] Utilizar API da Marvel (https://developer.marvel.com/docs);
 -   [x] Disponibilizar em uma URL pública do projeto rodando para avaliação;
 -   [x] Disponibilizar código em repositório Git de sua preferência, commitando cada fase do seu processo de desenvolvimento;
 -   [x] Seguir layout da pasta `./assets`, respeitando as páginas, features e componentes (não será avaliado “pixel perfect”).
@@ -15,11 +15,11 @@
 
 ##### Página de listagem de personagens (home):
 
--   [ ] Exibir os 20 primeiros resultados da API;
--   [ ] Permitir ordenação por nome do personagem;
--   [ ] Permitir filtrar por nome, pelo campo de busca;
--   [ ] Permitir mostrar apenas os personagens favoritos;
--   [ ] Permitir o usuário favoritar/desfavoritar até 5 personagens;
+-   [x] Exibir os 20 primeiros resultados da API;
+-   [x] Permitir ordenação por nome do personagem;
+-   [x] Permitir filtrar por nome, pelo campo de busca;
+-   [x] Permitir mostrar apenas os personagens favoritos;
+-   [x] Permitir o usuário favoritar/desfavoritar até 5 personagens;
 
 ##### Página de detalhe do personagem:
 

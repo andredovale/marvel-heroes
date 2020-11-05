@@ -1042,6 +1042,13 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@7.10.3":
+  version "7.10.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.3.tgz#670d002655a7c366540c67f6fd3342cd09500364"
+  integrity sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@7.12.1", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.1.tgz#b4116a6b6711d010b2dad3b7b6e43bf1b9954740"
@@ -3539,6 +3546,21 @@ axe-core@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.0.2.tgz#c7cf7378378a51fcd272d3c09668002a4990b1cb"
   integrity sha512-arU1h31OGFu+LPrOLGZ7nB45v940NMDMEJeNmbutu57P+UFDVnkZg3e+J1I2HJRZ9hT7gO8J91dn/PMrAiKakA==
+
+axios-hooks@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/axios-hooks/-/axios-hooks-2.1.0.tgz#007d70b821bf1a858a0c992bbfbacc62325db6f6"
+  integrity sha512-Vt4wWeE32T7NyaHmFJrHTebADjojk7THTiDsQ+GoEwBg6b4c9xuBuE2gG4a7L6JRPRkASNvTG83/5nKM59u2ZA==
+  dependencies:
+    "@babel/runtime" "7.10.3"
+    lru-cache "5.1.1"
+
+axios@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.0.tgz#26df088803a2350dff2c27f96fef99fe49442aca"
+  integrity sha512-fmkJBknJKoZwem3/IKSSLpkdNXZeBu5Q7GA/aRsr2btgrptmSCxi2oFjZHqGdK9DoTil9PIHlPIZw2EcRJXRvw==
+  dependencies:
+    follow-redirects "^1.10.0"
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -6824,7 +6846,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-follow-redirects@^1.0.0:
+follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
@@ -9337,7 +9359,7 @@ lowlight@1.12.1:
     fault "^1.0.2"
     highlight.js "~9.15.0"
 
-lru-cache@^5.1.1:
+lru-cache@5.1.1, lru-cache@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
   integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==

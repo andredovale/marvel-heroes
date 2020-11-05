@@ -1,33 +1,24 @@
 import React from "react";
 import {
+	fireEvent,
 	render,
 	screen,
-	fireEvent,
 } from "@marvel-heroes/design-system/src/custom/@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { renderHook, act } from "@testing-library/react-hooks";
 import { Router } from "react-router-dom";
 import { RouterProps } from "react-router";
 
-import { useLocalStorage } from "@marvel-heroes/utils/src/Storage";
-
 import Home from "../";
-import { FAVORITES_LIMIT } from "../../../contants";
 
-beforeEach(async () => {
-	const { result } = renderHook(() =>
-		useLocalStorage("marvelHeroes.search.input.value")
-	);
+const mockExecute = jest.fn();
 
-	const value = "lorem ipsum";
-
-	await act(async () => {
-		await result.current[1].set(value);
-	});
-});
+jest.mock("axios-hooks", () => ({
+	__esModule: true,
+	default: () => [{ data: undefined, loading: false }, mockExecute],
+}));
 
 afterEach(() => {
-	localStorage.clear();
+	window.localStorage.clear();
 });
 
 const history = ({
@@ -39,9 +30,7 @@ const history = ({
 	replace: jest.fn(),
 } as unknown) as RouterProps["history"];
 
-test("<Home /> render", async () => {
-	localStorage.clear();
-
+test("<Home /> render", () => {
 	render(
 		<Router history={history}>
 			<Home />
@@ -51,7 +40,7 @@ test("<Home /> render", async () => {
 	expect(screen.getByRole("textbox")).toBeInTheDocument();
 });
 
-test("<Home /> render based on another path", async () => {
+test("<Home /> render based on another path", () => {
 	render(
 		<Router
 			history={
@@ -68,48 +57,56 @@ test("<Home /> render based on another path", async () => {
 	expect(history.replace).toBeCalledWith("/");
 });
 
-test("<Home /> only favorites", async () => {
+test("<Home /> change value", () => {
 	render(
 		<Router history={history}>
 			<Home />
 		</Router>
 	);
 
-	const onlyFavoritesButton = screen.getByRole("button", {
-		name: /somente fav/i,
-	});
+	const input = screen.getByRole("textbox");
 
-	fireEvent.click(onlyFavoritesButton);
-	expect(
-		JSON.parse(localStorage.getItem("marvelHeroes") as string).search
-			.settings.onlyFavorites
-	).toBe("active");
+	userEvent.type(input, "Hulk");
 
-	// fireEvent.click(onlyFavoritesButton);
-	// expect(
-	// 	JSON.parse(localStorage.getItem("marvelHeroes") as string).search
-	// 		.settings.onlyFavorites
-	// ).toBe("unactive");
+	expect(screen.getByDisplayValue("Hulk")).toBeInTheDocument();
 });
 
-test("<Home /> order by name", async () => {
+test("<Home /> toggle order", () => {
+	// This is necessary to show SearchHeader
+	localStorage.setItem(
+		"marvelHeroes",
+		JSON.stringify({ search: { input: { value: "Hulk" } } })
+	);
+
 	render(
 		<Router history={history}>
 			<Home />
 		</Router>
 	);
 
-	const orderByNameButton = screen.getByText(/ordenar por/i);
-	userEvent.click(orderByNameButton);
+	const orderToggle = screen.getByRole("button", { name: /a\/z/i });
+
+	userEvent.click(orderToggle);
 
 	expect(
-		JSON.parse(localStorage.getItem("marvelHeroes") as string).search
-			.settings.orderByName
-	).toBe(true);
+		screen.queryByRole("button", { name: /a\/z/i })
+	).not.toBeInTheDocument();
+	expect(screen.getByRole("button", { name: /z\/a/i })).toBeInTheDocument();
+
+	userEvent.click(orderToggle);
+
+	expect(
+		screen.queryByRole("button", { name: /z\/a/i })
+	).not.toBeInTheDocument();
+	expect(screen.getByRole("button", { name: /a\/z/i })).toBeInTheDocument();
 });
 
-test("<Home /> change and submit search", async () => {
-	jest.spyOn(console, "log").mockImplementation(() => {});
+test("<Home /> submit", () => {
+	// This is necessary to show SearchHeader
+	localStorage.setItem(
+		"marvelHeroes",
+		JSON.stringify({ search: { input: { value: "Hulk" } } })
+	);
 
 	render(
 		<Router history={history}>
@@ -120,54 +117,21 @@ test("<Home /> change and submit search", async () => {
 	const input = screen.getByRole("textbox");
 
 	fireEvent.submit(input);
-	expect(window.console.log).toBeCalledWith({ value: "lorem ipsum" });
 
-	const mockTyping = "dolor ";
-	userEvent.type(input, mockTyping);
+	expect(mockExecute).toBeCalled();
+
+	userEvent.type(input, "Spider");
 	fireEvent.submit(input);
-	expect(window.console.log).toBeCalledWith({
-		value: `lorem ipsum${mockTyping}`,
-	});
+
+	expect(mockExecute).toBeCalled();
 });
 
-test("<Home /> un/favorite a hero", async () => {
-	render(
-		<Router history={history}>
-			<Home />
-		</Router>
+test("<Home /> toggle only favorites", () => {
+	// This is necessary to show SearchHeader
+	localStorage.setItem(
+		"marvelHeroes",
+		JSON.stringify({ search: { input: { value: "Hulk" } } })
 	);
-
-	const favoriteActions = screen.getAllByRole("button", {
-		name: "empty-heart.svg",
-	});
-
-	userEvent.click(favoriteActions[0]);
-
-	expect(
-		JSON.parse(window.localStorage.getItem("marvelHeroes") as string).heroes
-			.favorites
-	).toContain("123");
-
-	userEvent.click(favoriteActions[0]);
-
-	expect(
-		JSON.parse(window.localStorage.getItem("marvelHeroes") as string).heroes
-			.favorites
-	).not.toContain("123");
-});
-
-test("<Home /> favorite limit", async () => {
-	jest.spyOn(window, "alert").mockImplementation(() => {});
-
-	const { result } = renderHook(() =>
-		useLocalStorage("marvelHeroes.heroes.favorites")
-	);
-
-	const value = [...Array(FAVORITES_LIMIT)].map((_, index) => String(index));
-
-	await act(async () => {
-		await result.current[1].set(value);
-	});
 
 	render(
 		<Router history={history}>
@@ -175,15 +139,21 @@ test("<Home /> favorite limit", async () => {
 		</Router>
 	);
 
-	const favoriteActions = screen.getAllByRole("button", {
-		name: "empty-heart.svg",
-	});
+	const onlyFavorites = screen.getByRole("button", { name: /favorito/i });
 
-	userEvent.click(favoriteActions[0]);
+	userEvent.click(onlyFavorites);
 
-	expect(window.alert).toBeCalled();
 	expect(
-		JSON.parse(window.localStorage.getItem("marvelHeroes") as string).heroes
-			.favorites
-	).not.toContain("123");
+		screen.queryByRole("button", {
+			name: /empty-heart/i,
+		})
+	).not.toBeInTheDocument();
+
+	userEvent.click(onlyFavorites);
+
+	expect(
+		screen.getByRole("button", {
+			name: /empty-heart/i,
+		})
+	).toBeInTheDocument();
 });

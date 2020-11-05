@@ -33,7 +33,7 @@ const Spacer = styled("hr")`
 	margin: 0;
 `;
 
-const NoContent = styled(Typography).attrs({
+const Warning = styled(Typography).attrs({
 	color: "scarlet",
 	variant: "head-3",
 })`
@@ -47,4 +47,4 @@ const Footer = styled("footer")<{ noValue: boolean }>`
 	margin-top: ${({ noValue }) => (noValue ? "auto" : "11.0541vw")};
 `;
 
-export { Container, Wrapper, Header, Content, Spacer, NoContent, Footer };
+export { Container, Wrapper, Header, Content, Spacer, Warning, Footer };

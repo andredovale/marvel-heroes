@@ -54,6 +54,18 @@ test("<Home /> render", () => {
 
 	expect(container.querySelector("main")).not.toBeInTheDocument();
 
+	rerender(<Home {...mock} error />);
+
+	expect(screen.queryByText(mock.errorText)).toBeInTheDocument();
+
+	rerender(<Home {...mock} loading />);
+
+	expect(screen.queryByText(mock.loadingText)).toBeInTheDocument();
+
+	rerender(<Home {...mock} noFavorite />);
+
+	expect(screen.queryByText(mock.noFavoriteText)).toBeInTheDocument();
+
 	rerender(
 		<Home
 			{...mock}
@@ -61,7 +73,5 @@ test("<Home /> render", () => {
 		/>
 	);
 
-	expect(
-		screen.queryByText(mock.searchHeaderProps.toggleText)
-	).not.toBeInTheDocument();
+	expect(screen.queryByText(mock.noDataText)).toBeInTheDocument();
 });
