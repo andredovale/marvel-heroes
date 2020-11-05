@@ -79,8 +79,12 @@ const InnerContent = forwardRef<any, InnerContentProps>(
 						/>
 					)}
 				</Article>
-				<ComicBooksTitle>{comicBooksTitle}</ComicBooksTitle>
-				<ComicBooksGrid {...comicBooksGridProps} />
+				{!!comicBooksGridProps.comics.length && (
+					<>
+						<ComicBooksTitle>{comicBooksTitle}</ComicBooksTitle>
+						<ComicBooksGrid {...comicBooksGridProps} />
+					</>
+				)}
 			</>
 		);
 	}

@@ -5,6 +5,7 @@ const generateHash = (ts: string, publickKey: string, privateKey: string) =>
 
 const getTokens = (publickKey: string, privateKey: string) => {
 	const ts = String(+new Date());
+
 	return new URLSearchParams({
 		ts,
 		apikey: publickKey,

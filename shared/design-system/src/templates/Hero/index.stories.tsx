@@ -2,7 +2,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 
 import { default as Source, Props } from ".";
-import mock from "./__mock__";
+import mock from "./__mocks__/hero";
 
 export default {
 	title: "Templates/Hero",

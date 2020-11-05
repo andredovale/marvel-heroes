@@ -1,4 +1,4 @@
-import { Props } from ".";
+import { Props } from "..";
 
 const mock: Props = {
 	headerProps: {

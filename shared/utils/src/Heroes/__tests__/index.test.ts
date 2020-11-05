@@ -1,5 +1,5 @@
 import { abstractHeroes } from "..";
-import mock from "../mock";
+import mock from "../__mocks__/heroes";
 
 test("abstractHeroes empty", () => {
 	const result = abstractHeroes([]);

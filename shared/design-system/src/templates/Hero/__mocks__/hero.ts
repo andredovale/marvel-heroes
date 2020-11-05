@@ -1,4 +1,4 @@
-import { Props } from ".";
+import { Props } from "..";
 
 const mock: Props = {
 	headerProps: {
@@ -17,7 +17,7 @@ const mock: Props = {
 	heroDetailsProps: {
 		uid: "123",
 		name: "Hulk",
-		onFavorite: jest.fn(),
+		onFavorite: () => {},
 		isFavorited: false,
 		description:
 			"O Hulk, por vezes referido como O incrível Hulk é um personagem de quadrinhos/banda desenhada do gênero super-herói, propriedade da Marvel Comics, editora pela qual as histórias do personagem são publicados desde sua criação, nos anos 1960.",

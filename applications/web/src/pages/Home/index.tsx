@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import useAxios from "axios-hooks";
 
@@ -65,10 +65,10 @@ const App = () => {
 		return `${API}v1/public/characters?${charactersQuery}&${tokensQuery}`;
 	}, [orderByName, savedValue]);
 
-	const [{ data, loading, error }, execute] = useAxios(
-		{ url, timeout: 5000 },
-		{ manual: true }
-	);
+	const [
+		{ data: { data: { results = [] } = {} } = {}, loading, error },
+		execute,
+	] = useAxios({ url, timeout: 5000 }, { manual: true });
 
 	/** This approach is necessary, because on consecutives submits,
 	 * the useEffect don't run
@@ -92,20 +92,10 @@ const App = () => {
 		onFavorite,
 	} = useFavorite(FAVORITES_LIMIT);
 
-	/** Local data of heroes (based on result of fetch) on needed format */
-	const [heroes, setHeroes] = useState(
-		abstractHeroes(favorites, data?.data.results)
-	);
-
-	useEffect(() => {
-		if (!data) return;
-
-		const {
-			data: { results },
-		} = data;
-
-		setHeroes(abstractHeroes(favorites, results));
-	}, [data, favorites]);
+	const heroes = useMemo(() => abstractHeroes(favorites, results), [
+		favorites,
+		results,
+	]);
 
 	return (
 		<Home

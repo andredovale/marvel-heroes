@@ -2,6 +2,69 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bd617c20-09ef-4789-b935-96e65b28a46a/deploy-status)](https://app.netlify.com/sites/do-vale-marvel-heroes/deploys)
 
+## Como executar
+
+Como foi utilizado os recursos de monorepo do Yarn v1, caso haja a necessidade de rodar o projeto localmente, recomendo as seguintes versões (versões quais desenvolvi o projeto por inteiro):
+
+```json
+"node": "12.16.1"
+"yarn": "1.19.1"
+```
+
+Para instalar as dependências, na raiz:
+
+```
+yarn
+```
+
+Para executar a aplicação web, na raiz:
+
+```
+yarn web start
+```
+
+Ou, na pasta `applications/web`:
+
+```
+yarn start
+```
+
+Para executar o StoryBook onde foi desenvolvidos os componentes visual, na raiz:
+
+```
+yarn ds storybook
+```
+
+Ou, na pasta `shared/design-system`:
+
+```
+yarn storybook
+```
+
+## Testes
+
+Para rodar todos os testes, na raiz:
+
+```
+yarn test
+```
+
+Ou, individualmente:
+
+```
+yarn web test
+yarn ds test
+yarn utils test
+```
+
+Também tendo a opção de executar localmente pelas pastas `applications/web`, `shared/design-system` ou `shared/utils`:
+
+```
+yarn test
+```
+
+<hr>
+
 ## Requisitos
 
 -   [x] Deve ser uma SPA “single page application” (dar preferencia ao React);
@@ -24,7 +87,7 @@
 ##### Página de detalhe do personagem:
 
 -   [x] Exibir dados do personagem;
--   [ ] Exibir últimos 10 quadrinhos lançados deste personagem (onSaleDate);
+-   [x] Exibir últimos 10 quadrinhos lançados deste personagem (onSaleDate);
 -   [x] Permitir o usuário favoritar/desfavoritar (dentro do limite de 5).
 
 ## Bônus

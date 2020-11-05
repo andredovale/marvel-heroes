@@ -2,13 +2,19 @@ import React from "react";
 import { render, screen, fireEvent } from "custom/@testing-library/react";
 
 import Hero from "..";
-import mock from "../__mock__";
+import mock from "../__mocks__/hero";
 import userEvent from "@testing-library/user-event";
 
 test("<Hero /> render", () => {
 	jest.spyOn(console, "log").mockImplementation(jest.fn());
 
-	const { container, rerender } = render(<Hero {...mock} />);
+	const onFavorite = jest.fn();
+	const { container, rerender } = render(
+		<Hero
+			{...mock}
+			heroDetailsProps={{ ...mock.heroDetailsProps, onFavorite }}
+		/>
+	);
 
 	expect(container.querySelector("header")).toBeInTheDocument();
 	expect(container.querySelector("main")).toBeInTheDocument();
@@ -25,7 +31,7 @@ test("<Hero /> render", () => {
 
 	userEvent.click(screen.getByTitle(/heart/i));
 
-	expect(mock.heroDetailsProps.onFavorite).toBeCalled();
+	expect(onFavorite).toBeCalled();
 
 	rerender(
 		<Hero

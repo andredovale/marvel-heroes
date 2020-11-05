@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "custom/@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import Home from "..";
-import mock from "../__mock__";
+import mock from "../__mocks__/home";
 
 test("<Home /> render", () => {
 	jest.spyOn(console, "log").mockImplementation(jest.fn());

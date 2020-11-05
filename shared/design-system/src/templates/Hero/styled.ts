@@ -53,6 +53,8 @@ const BigHero = styled(Typography).attrs({
 	text-transform: uppercase;
 	top: -2.2694vw;
 	transform: translateX(-50%);
+	user-select: none;
+	white-space: nowrap;
 	z-index: -1;
 `;
 
