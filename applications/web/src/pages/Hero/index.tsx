@@ -3,12 +3,14 @@ import { useParams, Link, useHistory } from "react-router-dom";
 import useAxios from "axios-hooks";
 
 import Hero from "@marvel-heroes/design-system/src/templates/Hero";
-import mock from "@marvel-heroes/design-system/src/templates/Hero/__mock__";
 import { useSearch } from "@marvel-heroes/utils/src/Search";
 import { useFavorite } from "@marvel-heroes/utils/src/Favorites";
 import { getTokens } from "@marvel-heroes/utils/src/MarvelHash";
 
 import { API, FAVORITES_LIMIT } from "contants";
+
+const hulk =
+	"https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5b8d2b12-21e8-4931-8a6d-fb9ecdd60383/dcms8q0-782bfe57-6cfc-40a5-a96d-4db390d0180d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvNWI4ZDJiMTItMjFlOC00OTMxLThhNmQtZmI5ZWNkZDYwMzgzXC9kY21zOHEwLTc4MmJmZTU3LTZjZmMtNDBhNS1hOTZkLTRkYjM5MGQwMTgwZC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.iw-isL2nElIjiymCT6KgzVwA2D1FAM9ZYFzU0bipqak";
 
 const App = () => {
 	const { savedValue, onChange, onSubmit } = useSearch(useHistory);
@@ -76,9 +78,7 @@ const App = () => {
 				},
 			}}
 			movieThumbnail={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-			highDefinitionPhoto={
-				hero.id === 1009351 ? mock.highDefinitionPhoto : undefined
-			}
+			highDefinitionPhoto={hero.id === 1009351 ? hulk : undefined}
 			comicBooksTitle="Últimos lançamentos"
 			comicBooksGridProps={{
 				comics: [
