@@ -33,7 +33,9 @@ const App = () => {
 		if (pathname !== "/") replace("/");
 	}, [pathname, replace]);
 
-	const { savedValue, debouncedSetSavedValue, onChange } = useSearch();
+	const { savedValue, debouncedSetSavedValue, onChange } = useSearch(
+		useHistory
+	);
 
 	/** Order by name toggle config;
 	 * Before onSubmit to use refetch

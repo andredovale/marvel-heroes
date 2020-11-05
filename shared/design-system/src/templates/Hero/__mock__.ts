@@ -10,9 +10,14 @@ const mock: Props = {
 			},
 		},
 	},
-	noContentText: "Nenhum herói encontrado",
+	error: false,
+	errorText: "Erro ao carregar herói",
+	loading: false,
+	loadingText: "Carregando herói",
 	heroDetailsProps: {
+		uid: "123",
 		name: "Hulk",
+		onFavorite: jest.fn(),
 		isFavorited: false,
 		description:
 			"O Hulk, por vezes referido como O incrível Hulk é um personagem de quadrinhos/banda desenhada do gênero super-herói, propriedade da Marvel Comics, editora pela qual as histórias do personagem são publicados desde sua criação, nos anos 1960.",

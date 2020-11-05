@@ -3,11 +3,14 @@ import { render, screen } from "custom/@testing-library/react";
 import { Props as RatingProps } from "molecules/Rating";
 
 import HeroDetails, { Props } from "..";
+import userEvent from "@testing-library/user-event";
 
 test("<HeroDetails /> render", () => {
 	const props: Props = {
+		uid: "123",
 		name: "Hulk",
 		isFavorited: false,
+		onFavorite: jest.fn(),
 		description:
 			"O Hulk, por vezes referido como O incrível Hulk é um personagem de quadrinhos/banda desenhada do gênero super-herói, propriedade da Marvel Comics, editora pela qual as histórias do personagem são publicados desde sua criação, nos anos 1960.",
 		comicBooksTitle: "Quadrinhos",
@@ -26,7 +29,7 @@ test("<HeroDetails /> render", () => {
 	for (const key in props) {
 		if (Object.prototype.hasOwnProperty.call(props, key)) {
 			const element = props[key as keyof Props];
-			if (typeof element !== "string") continue;
+			if (typeof element !== "string" || key === "uid") continue;
 
 			stringProps.push(key as keyof Props);
 		}
@@ -40,4 +43,8 @@ test("<HeroDetails /> render", () => {
 
 	rerender(<HeroDetails {...props} isFavorited={true} />);
 	expect(screen.queryByTitle(/emptyheart/i)).not.toBeInTheDocument();
+
+	userEvent.click(screen.getByTitle(/heart/i));
+
+	expect(props.onFavorite).toBeCalled();
 });

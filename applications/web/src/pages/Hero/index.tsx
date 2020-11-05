@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import useAxios from "axios-hooks";
 
 import Hero from "@marvel-heroes/design-system/src/templates/Hero";
@@ -11,7 +11,7 @@ import { getTokens } from "@marvel-heroes/utils/src/MarvelHash";
 import { API, FAVORITES_LIMIT } from "contants";
 
 const App = () => {
-	const { savedValue, onChange, onSubmit } = useSearch();
+	const { savedValue, onChange, onSubmit } = useSearch(useHistory);
 
 	const { uid } = useParams<{ uid: string }>();
 

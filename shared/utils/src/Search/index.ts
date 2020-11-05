@@ -1,12 +1,12 @@
 import { InputHTMLAttributes, useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory as T } from "react-router-dom";
 import _debounce from "lodash/debounce";
 
 import { Props as HeaderProps } from "@marvel-heroes/design-system/src/organisms/Header";
 
 import { useLocalStorage } from "Storage";
 
-const useSearch = () => {
+const useSearch = (useHistory: typeof T) => {
 	const [savedValue = "", { set: setSavedValue }] = useLocalStorage(
 		"marvelHeroes.search.input.value"
 	);

@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "custom/@testing-library/react";
 
 import Hero from "..";
 import mock from "../__mock__";
+import userEvent from "@testing-library/user-event";
 
 test("<Hero /> render", () => {
 	jest.spyOn(console, "log").mockImplementation(jest.fn());
@@ -22,6 +23,10 @@ test("<Hero /> render", () => {
 
 	expect(screen.getAllByText(mock.heroDetailsProps.name).length).toBeTruthy();
 
+	userEvent.click(screen.getByTitle(/heart/i));
+
+	expect(mock.heroDetailsProps.onFavorite).toBeCalled();
+
 	rerender(
 		<Hero
 			{...mock}
@@ -35,4 +40,12 @@ test("<Hero /> render", () => {
 	expect(
 		screen.queryByText(mock.heroDetailsProps.name)
 	).not.toBeInTheDocument();
+
+	rerender(<Hero {...mock} error />);
+
+	expect(screen.getByText(mock.errorText)).toBeInTheDocument();
+
+	rerender(<Hero {...mock} loading />);
+
+	expect(screen.getByText(mock.loadingText)).toBeInTheDocument();
 });
