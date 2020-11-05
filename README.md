@@ -29,7 +29,7 @@ Ou, na pasta `applications/web`:
 yarn start
 ```
 
-Para executar o StoryBook onde foi desenvolvidos os componentes visual, na raiz:
+Para executar o StoryBook onde foi desenvolvido os componentes visuais, na raiz:
 
 ```
 yarn ds storybook
