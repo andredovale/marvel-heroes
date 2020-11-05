@@ -1,58 +1,26 @@
-import React, { InputHTMLAttributes, useCallback, useMemo } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
-import _debounce from "lodash/debounce";
+import React, { useMemo } from "react";
+import { useParams, Link } from "react-router-dom";
 import useAxios from "axios-hooks";
 
-import { Props as HeroCardProps } from "@marvel-heroes/design-system/src/molecules/HeroCard";
-import { Props as HeaderProps } from "@marvel-heroes/design-system/src/organisms/Header";
 import Hero from "@marvel-heroes/design-system/src/templates/Hero";
 import mock from "@marvel-heroes/design-system/src/templates/Hero/__mock__";
-import { generateHash } from "@marvel-heroes/utils/src/MarvelHash";
-import { useLocalStorage } from "@marvel-heroes/utils/src/Storage";
+import { useSearch } from "@marvel-heroes/utils/src/Search";
+import { useFavorite } from "@marvel-heroes/utils/src/Favorites";
+import { getTokens } from "@marvel-heroes/utils/src/MarvelHash";
 
 import { API, FAVORITES_LIMIT } from "contants";
 
 const App = () => {
-	const [savedValue = "", { set: setSavedValue }] = useLocalStorage(
-		"marvelHeroes.search.input.value"
-	);
-
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const debouncedSetSavedValue = useCallback(
-		_debounce(setSavedValue, 300),
-		[]
-	);
-
-	const onChange: InputHTMLAttributes<HTMLInputElement>["onChange"] = (
-		event
-	) => {
-		debouncedSetSavedValue(event.currentTarget.value);
-	};
-
-	const { push } = useHistory();
-
-	const onSubmit: HeaderProps["onSubmit"] = (_, value) => {
-		if (value !== savedValue) {
-			debouncedSetSavedValue(value);
-		}
-
-		push("/");
-	};
+	const { savedValue, onChange, onSubmit } = useSearch();
 
 	const { uid } = useParams<{ uid: string }>();
 
 	/** URL config and axios hook to fetch heroes */
 	const url = useMemo(() => {
-		const ts = String(+new Date());
-		const tokensQuery = new URLSearchParams({
-			ts,
-			apikey: process.env.REACT_APP_MARVEL_PUBLIC as string,
-			hash: generateHash(
-				ts,
-				process.env.REACT_APP_MARVEL_PUBLIC as string,
-				process.env.REACT_APP_MARVEL_PRIVATE as string
-			),
-		}).toString();
+		const tokensQuery = getTokens(
+			process.env.REACT_APP_MARVEL_PUBLIC as string,
+			process.env.REACT_APP_MARVEL_PRIVATE as string
+		);
 
 		return `${API}v1/public/characters/${uid}?${tokensQuery}`;
 	}, [uid]);
@@ -69,28 +37,7 @@ const App = () => {
 		},
 	] = useAxios({ url, timeout: 5000 });
 
-	/** Favorites heroes collection on browser storage */
-	const [favorites = [], { set: setFavorites }] = useLocalStorage(
-		"marvelHeroes.heroes.favorites"
-	);
-
-	const onFavorite: HeroCardProps["onFavorite"] = (uid) => {
-		if (favorites.includes(uid)) {
-			const index = (favorites as string[]).findIndex(
-				(favoritedUid) => uid === favoritedUid
-			);
-			setFavorites([
-				...favorites.slice(0, index),
-				...favorites.slice(index + 1),
-			]);
-		} else {
-			if (favorites.length >= FAVORITES_LIMIT) {
-				alert(`Limite de ${FAVORITES_LIMIT} heróis favoritos atingido`);
-			} else {
-				setFavorites([...favorites, uid]);
-			}
-		}
-	};
+	const { favorites, onFavorite } = useFavorite(FAVORITES_LIMIT);
 
 	return (
 		<Hero

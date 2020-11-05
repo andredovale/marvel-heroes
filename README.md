@@ -23,9 +23,9 @@
 
 ##### Página de detalhe do personagem:
 
--   [ ] Exibir dados do personagem;
+-   [x] Exibir dados do personagem;
 -   [ ] Exibir últimos 10 quadrinhos lançados deste personagem (onSaleDate);
--   [ ] Permitir o usuário favoritar/desfavoritar (dentro do limite de 5).
+-   [x] Permitir o usuário favoritar/desfavoritar (dentro do limite de 5).
 
 ## Bônus
 
