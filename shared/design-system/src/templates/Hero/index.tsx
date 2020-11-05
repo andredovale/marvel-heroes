@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-console.log("HERO");
 
 import { ComicBooksGrid, Header, HeroDetails } from "organisms";
 import { Props as HeaderProps } from "organisms/Header";
