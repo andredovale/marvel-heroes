@@ -17,6 +17,14 @@ Para instalar as dependências, na raiz:
 yarn
 ```
 
+Antes de executar a aplicação web, é necessário configurar as variáveis de ambiente no arquivo `applications/web/.env.development.local` (ou diretamente nas variáveis globais de sua máquina), com a seguinte estrutura:
+
+```
+REACT_APP_MARVEL = http://gateway.marvel.com/
+REACT_APP_MARVEL_PUBLIC = ${publicKey}
+REACT_APP_MARVEL_PRIVATE = ${privateKey}
+```
+
 Para executar a aplicação web, na raiz:
 
 ```
